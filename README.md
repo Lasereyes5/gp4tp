@@ -14,6 +14,7 @@ The package contains following parts:
 ### Example
 
 ```c
+#include <stdlib.h>
 #include "gp4tp/gdiplus.h"
 
 int main(int argc, char *argv[]){
