@@ -44,9 +44,13 @@ int main(int argc, char *argv[]){
 	ImageCodecInfo* pImageCodecInfo = (ImageCodecInfo*)(malloc(size));
 	GdipGetImageEncoders(num, size, pImageCodecInfo);
 	
-	// Encoder index:{Bmp,Jpeg,Gif,Tiff,Png}
-	enum GdipEncoderIndex {Bmp,Jpeg,Gif,Tiff,Png};
-	GdipSaveImageToFile(bmp, L"output.png", pImageCodecInfo[Png].Clsid, NULL);
+	// check the mimetype and choose the matched encoder.
+	for(int i = 0; i < num; i++){
+		if(wcscmp(L"image/png", pImageCodecInfo[i].MimeType)==0){
+			GdipSaveImageToFile(bmp,L"output.png", &pImageCodecInfo[i].Clsid, NULL);
+			break;
+		}
+	}
 	free(pImageCodecInfo);
 	
 	
