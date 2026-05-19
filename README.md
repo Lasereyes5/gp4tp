@@ -45,7 +45,8 @@ int main(int argc, char *argv[]){
 	GdipGetImageEncoders(num, size, pImageCodecInfo);
 	
 	// Encoder index:{Bmp,Jpeg,Gif,Tiff,Png}
-	GdipSaveImageToFile(bmp, L"output.png", pImageCodecInfo[4].Clsid, NULL);
+	enum GdipEncoderIndex {Bmp,Jpeg,Gif,Tiff,Png};
+	GdipSaveImageToFile(bmp, L"output.png", pImageCodecInfo[Png].Clsid, NULL);
 	free(pImageCodecInfo);
 	
 	
